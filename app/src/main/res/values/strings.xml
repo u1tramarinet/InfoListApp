@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">InfoListApp</string>
+    <string name="title_random_value">ひたすらランダム値出すサンプル</string>
+    <string name="back_button">戻る</string>
+</resources>
