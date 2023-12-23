@@ -2,7 +2,7 @@ package com.u1tramarinet.infolistapp.repository
 
 import kotlinx.coroutines.flow.Flow
 
-interface InfoRepository {
+interface RandomValueRepository {
     fun getRandomValueStream(): Flow<Int>
     suspend fun setUpdateInterval(timeMills: Long)
     fun getUpdateIntervalStream(): Flow<Long>

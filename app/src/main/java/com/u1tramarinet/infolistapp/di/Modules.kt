@@ -1,7 +1,9 @@
 package com.u1tramarinet.infolistapp.di
 
-import com.u1tramarinet.infolistapp.repository.InfoRepository
-import com.u1tramarinet.infolistapp.repository.InfoRepositoryImpl
+import com.u1tramarinet.infolistapp.repository.RandomValuesRepository
+import com.u1tramarinet.infolistapp.repository.RandomValuesRepositoryImpl
+import com.u1tramarinet.infolistapp.repository.RandomValueRepository
+import com.u1tramarinet.infolistapp.repository.RandomValueRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,5 +15,9 @@ import javax.inject.Singleton
 abstract class Modules {
     @Binds
     @Singleton
-    abstract fun bindsInfoRepository(impl: InfoRepositoryImpl): InfoRepository
+    abstract fun bindsRandomValueRepository(impl: RandomValueRepositoryImpl): RandomValueRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindsRandomValuesRepository(impl: RandomValuesRepositoryImpl): RandomValuesRepository
 }

@@ -23,6 +23,7 @@ import androidx.navigation.compose.rememberNavController
 import com.u1tramarinet.infolistapp.R
 import com.u1tramarinet.infolistapp.ui.screen.MainScreen
 import com.u1tramarinet.infolistapp.ui.screen.RandomValueScreen
+import com.u1tramarinet.infolistapp.ui.screen.RandomValuesScreen
 
 @Composable
 fun InfoListApp(
@@ -49,12 +50,15 @@ fun InfoListApp(
             modifier = Modifier.padding(innerPadding),
         ) {
             composable(InfoListScreen.Top.name) {
-                MainScreen(Modifier.fillMaxSize(), onRandomValueClick = {
-                    navController.navigate(InfoListScreen.RandomValue.name)
+                MainScreen(Modifier.fillMaxSize(), onNavigateClick = { screen ->
+                    navController.navigate(screen.name)
                 })
             }
             composable(InfoListScreen.RandomValue.name) {
                 RandomValueScreen(modifier = Modifier.fillMaxSize())
+            }
+            composable(InfoListScreen.RandomValues.name) {
+                RandomValuesScreen(modifier = Modifier.fillMaxSize())
             }
         }
 
@@ -85,7 +89,8 @@ fun InfoListAppBar(
     )
 }
 
-enum class InfoListScreen(@StringRes val title: Int) {
+enum class InfoListScreen(@StringRes val title: Int, val needListUp: Boolean = false) {
     Top(title = R.string.app_name),
-    RandomValue(title = R.string.title_random_value)
+    RandomValue(title = R.string.title_random_value, needListUp = true),
+    RandomValues(title = R.string.title_random_values, needListUp = true),
 }

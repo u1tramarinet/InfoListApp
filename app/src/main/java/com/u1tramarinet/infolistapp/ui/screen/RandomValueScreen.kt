@@ -8,18 +8,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.u1tramarinet.infolistapp.ui.common.PlayPauseButton
 
 @Composable
 fun RandomValueScreen(
@@ -126,27 +125,6 @@ private fun UpdateIntervalSlider(
         value = sliderState.value,
         onValueChange = { f -> onValueChange(f) },
     )
-}
-
-@Composable
-private fun PlayPauseButton(
-    modifier: Modifier = Modifier,
-    isPlaying: Boolean,
-    onClick: (Boolean) -> Unit
-) {
-    val title = if (isPlaying) "停止する" else "再生する"
-    val foregroundColor = if (isPlaying) Color.White else Color.Black
-    val backgroundColor = if (isPlaying) Color.Red else Color.Green
-    Button(
-        modifier = modifier,
-        onClick = { onClick(!isPlaying) },
-        colors = ButtonDefaults.buttonColors(
-            containerColor = backgroundColor,
-            contentColor = foregroundColor,
-        )
-    ) {
-        Text(text = title)
-    }
 }
 
 private fun padStartLong(value: Long, length: Int): String {

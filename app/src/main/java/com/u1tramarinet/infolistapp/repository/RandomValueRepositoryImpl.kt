@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class InfoRepositoryImpl @Inject constructor(
+class RandomValueRepositoryImpl @Inject constructor(
     @DefaultDispatcher private val dispatcher: CoroutineDispatcher,
-) : InfoRepository {
+) : RandomValueRepository {
     private val delayTimeMills: MutableStateFlow<Long> = MutableStateFlow(100L)
     private val runningState: MutableStateFlow<Boolean> = MutableStateFlow(true)
     override fun getRandomValueStream(): Flow<Int> = flow {

@@ -9,25 +9,31 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.u1tramarinet.infolistapp.ui.InfoListScreen
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    onRandomValueClick: () -> Unit,
+    onNavigateClick: (InfoListScreen) -> Unit,
 ) {
     Column(
         modifier = modifier.padding(32.dp),
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Button(onClick = onRandomValueClick) {
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center,
-                text = "ランダム値をひたすら出すサンプル",
-            )
-        }
+        InfoListScreen.entries
+            .filter { entry -> entry.needListUp }
+            .forEach { screen ->
+                Button(onClick = { onNavigateClick(screen) }) {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        text = stringResource(id = screen.title),
+                    )
+                }
+            }
     }
 }
